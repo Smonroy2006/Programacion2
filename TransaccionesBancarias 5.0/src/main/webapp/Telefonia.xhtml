@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title> Banco El Mondongo </title>
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css"/>
+    <h:outputStylesheet library="css" name="style.css" target="head"/>
+</h:head>
+
+<h:body style="background-color: #D3DAD9">
+    <h:form>
+
+        <h:panelGroup layout="block" styleClass="flex flex-column m-3 gap-3">
+
+            <div class="flex p-3 border-round-3xl align-items-center gap-3" style="background-color: #37353E">
+                <h:graphicImage library="images" name="mondongoLogo.jpeg" alt="Logo Mondongo"
+                                styleClass="border-round-2xl w-8rrm h-auto"/>
+                <h1 class="text-white text-xl"> Banco El Mondongo </h1>
+            </div>
+
+            <div class="p-2 border-round-3xl text-center" style="background-color: #44444E">
+                <p class="text-white text-lg">“Pa’ los que trabajan juicioso, pa’ los que rebuscan, y pa’ los que sueñan en grande.”</p>
+            </div>
+
+            <p:menubar hideDelay="1000" layout="block" styleClass="p-2 border-round-3xl flex justify-content-center"
+                       style="background-color: #715A5A;">
+
+                <p:submenu label="Operaciones con Telefonos" icon = "pi pi-fw pi-pencil">
+                    <p:menuitem outcome="xhtmlTelefonia/RegistrarTelefonia.xhtml" value="Crear" icon="pi pi-plus"/>
+                    <p:menuitem outcome="xhtmlTelefonia/ActualizarTelefonia.xhtml" value="Actualizar" icon="pi pi-refresh"/>
+                    <p:menuitem outcome="xhtmlTelefonia/EliminarTransacciones.xhtml" value="Eliminar" icon="pi pi-trash"/>
+                </p:submenu>
+
+                <p:divider layout="vertical"/>
+
+                <f:facet name="end">
+                    <p:button outcome = "Nosotros.xhtml" value="Nosotros" icon="pi pi-fw pi-users" styleClass="mx-2 ui-button-info"/>
+                    <p:button outcome = "index.xhtml" value="Home" icon="pi pi-fw pi-home" styleClass="mx-2 ui-button-info"/>
+                </f:facet>
+
+            </p:menubar>
+
+            <p:dataTable value="#{telefonicaBean.transacciones}" var="telefonia" styleClass="mt-3">
+
+                <p:column headerText="ID">
+                    <h:outputText value="#{telefonia.id}"/>
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{telefonia.nombre}"/>
+                </p:column>
+
+                <p:column headerText="Valor">
+                    <h:outputText value="#{telefonia.valor}"/>
+                </p:column>
+
+                <p:column headerText="ID">
+                    <h:outputText value="#{telefonia.banco}"/>
+                </p:column>
+
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{telefonia.fecha}"/>
+                </p:column>
+
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{telefonia.nombreDestinatario}"/>
+                </p:column>
+
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{telefonia.operador}"/>
+                </p:column>
+
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{telefonia.numeroTelefonico}"/>
+                </p:column>
+
+            </p:dataTable>
+
+            <h:panelGroup layout="block" styleClass="p-3 border-round-3xl text-center flex flex-column gap-3" style="background-color: #37353E">
+
+                <p class="text-white text-lg line-height-3"> Pa’ los que trabajan juicioso, pa’ los que rebuscan, y pa’ los que sueñan en grande. En Mondongo creemos que la plata se maneja sin tanto enredo, con confianza y sabor casero. </p>
+                <p class="text-white text-lg line-height-3"> Derechos reservados a SM Company </p>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+    </h:form>
+</h:body>
+</html>
